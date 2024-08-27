@@ -82,8 +82,9 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("*"));
-        config.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
+        config.setAllowedOrigins(Arrays.asList(
+                "https://carproject-600603e2c33a.herokuapp.com:3000"
+        ));
         config.setAllowedMethods(Arrays.asList("*"));
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowCredentials(false);
