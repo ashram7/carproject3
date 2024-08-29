@@ -45,18 +45,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    /*@Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                // User.builder()
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("{noop}password")  // Use {noop} for plain text (for example purposes only)
-                        .roles("USER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
-    }*/
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
@@ -83,10 +71,11 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(Arrays.asList(
-                "https://carproject-600603e2c33a.herokuapp.com:3000"
+                "https://carproject-600603e2c33a.herokuapp.com",
+                "https://ashram7.github.io"
         ));
-        config.setAllowedMethods(Arrays.asList("*"));
-        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
         config.setAllowCredentials(false);
         config.applyPermitDefaultValues();
 
